@@ -4,8 +4,18 @@ import { useState, useEffect } from "react";
 import MenuListing from "../components/menulisting";
 import { client } from "@/sanity/lib/client"; // Ensure correct sanity client import
 
+interface MenuItem {
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+  slug: string;
+  category: string;
+}
+
 const MenuPage = () => {
-  const [menuItems, setMenuItems] = useState<any[]>([]);
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   useEffect(() => {

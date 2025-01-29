@@ -1,5 +1,5 @@
 import { urlFor } from "@/sanity/lib/client";
-
+import Image from "next/image";
 interface MenuItem {
   _id: string;
   image?: string;
@@ -25,9 +25,11 @@ const MenuListing = ({ items }: MenuListingProps) => {
       {items.map((item) => (
         <div key={item._id} className="menu-item border p-4 rounded-md shadow-md">
           {item.image && (
-            <img
+            <Image
               src={urlFor(item.image).url()}
               alt={item.name}
+              width={160}
+              height={160}
               className="w-full h-40 object-cover rounded-md mb-2"
             />
           )}

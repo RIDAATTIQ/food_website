@@ -60,7 +60,7 @@
 
 
 import { client } from "@/sanity/lib/client";
-
+import Image from "next/image";
 const fetchMenuItem = async (slugValue: string) => {
   const query = `*[_type == "menuItem" && slug.current == $slug][0] {
     _id,
@@ -76,7 +76,7 @@ const fetchMenuItem = async (slugValue: string) => {
 };
 
 const MenuPage = async () => {
-  const slug = "example-slug"; // Replace with actual slug value
+  const slug = "zinger_burger"; // Replace with actual slug value
   const menuItem = await fetchMenuItem(slug);
 
   if (!menuItem) {
@@ -89,7 +89,7 @@ const MenuPage = async () => {
       <p>{menuItem.description}</p>
       <p>Price: ${menuItem.price}</p>
       {menuItem.image && (
-        <img src={menuItem.image.asset.url} alt={menuItem.name} />
+        <Image src={menuItem.image.asset.url} alt={menuItem.name} width={160} height={160}/>
       )}
     </div>
   );
