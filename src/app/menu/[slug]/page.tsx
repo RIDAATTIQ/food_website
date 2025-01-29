@@ -76,7 +76,7 @@ const fetchMenuItem = async (slugValue: string) => {
 };
 
 const MenuPage = async () => {
-  const slug = "zinger_burger"; // Replace with actual slug value
+  const slug = "slug.value"; // Replace with actual slug value
   const menuItem = await fetchMenuItem(slug);
 
   if (!menuItem) {
