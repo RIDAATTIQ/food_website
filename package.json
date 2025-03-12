@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sanity/client": "^6.27.2",
+    "@sanity/client": "^6.28.3",
     "@sanity/image-url": "^1.1.0",
-    "@sanity/vision": "^3.70.0",
+    "@sanity/vision": "^2.2.6",
     "@tailwindcss/line-clamp": "^0.4.4",
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.20",
@@ -19,7 +19,7 @@
     "jsdom": "^26.0.0",
     "mangodb": "^1.0.0",
     "mongoose": "^8.9.6",
-    "next": "15.1.5",
+    "next": "^15.2.2",
     "next-sanity": "^0.8.5",
     "punycode": "^2.3.1",
     "react": "^19.0.0",
