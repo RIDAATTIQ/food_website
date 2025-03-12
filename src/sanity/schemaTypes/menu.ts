@@ -2,7 +2,7 @@ import { defineType } from "sanity";
 
 // Define the menu schema
 export default defineType({
-  name: "menu",
+  name: "Menu",
   title: "Menu",
   type: "document",
   fields: [
@@ -22,7 +22,7 @@ export default defineType({
     },
     {
       name: "description",
-      title: "Description",
+      title: "description",
       type: "text",
     },
     {

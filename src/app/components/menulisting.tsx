@@ -1,43 +1,48 @@
-import { urlFor } from "@/sanity/lib/client";
-import Image from "next/image";
-interface MenuItem {
-  _id: string;
-  image?: string;
-  name: string;
-  description: string;
-  price: number;
-}
+"use client";
+import { useState } from "react";
+import MenuCard, { MenuItem } from "./menucard";
 
-interface MenuListingProps {
-  items: MenuItem[];
-}
+const categories = [
+  { title: "All", value: "all" },
+  { title: "Starter", value: "starter" },
+  { title: "Main Course", value: "main_course" },
+  { title: "Dessert", value: "dessert" },
+  { title: "Beverage", value: "beverage" },
+];
 
-const MenuListing = ({ items }: MenuListingProps) => {
-  // Debugging step to check if items is received correctly
-  console.log("MenuListing items:", items);
+const MenuListing = ({ menuItems }: { menuItems: MenuItem[] }) => {
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  if (!items || items.length === 0) {
-    return <p>No items found.</p>;
-  }
+  const filteredItems =
+    selectedCategory === "all"
+      ? menuItems
+      : menuItems.filter(
+          (item) => item.category?.toLowerCase() === selectedCategory.toLowerCase()
+        );
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {items.map((item) => (
-        <div key={item._id} className="menu-item border p-4 rounded-md shadow-md">
-          {item.image && (
-            <Image
-              src={urlFor(item.image).url()}
-              alt={item.name}
-              width={160}
-              height={160}
-              className="w-full h-40 object-cover rounded-md mb-2"
-            />
-          )}
-          <h3 className="text-xl font-bold">{item.name}</h3>
-          <p className="text-gray-600">{item.description}</p>
-          <p className="text-lg font-semibold">${item.price}</p>
-        </div>
-      ))}
+    <div>
+      <div className="flex justify-center gap-4 mb-4">
+        {categories.map((cat) => (
+          <button
+            key={cat.value}
+            className={`px-4 py-2 rounded-md ${
+              selectedCategory === cat.value ? "bg-green-500 text-white" : "bg-gray-200"
+            }`}
+            onClick={() => setSelectedCategory(cat.value)}
+          >
+            {cat.title}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item) => <MenuCard key={item._id} {...item} />)
+        ) : (
+          <p className="text-center text-gray-500 col-span-full">No items found.</p>
+        )}
+      </div>
     </div>
   );
 };

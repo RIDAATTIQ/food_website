@@ -1,0 +1,71 @@
+[
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Dish Name"
+      },
+      {
+        "options": {
+          "source": "name",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "description"
+      },
+      {
+        "name": "price",
+        "type": "number"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Starter",
+              "value": "starter"
+            },
+            {
+              "title": "Main Course",
+              "value": "main_course"
+            },
+            {
+              "title": "Dessert",
+              "value": "dessert"
+            },
+            {
+              "title": "Beverage",
+              "value": "beverage"
+            }
+          ]
+        },
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image"
+      }
+    ],
+    "name": "Menu",
+    "type": "document"
+  }
+]
